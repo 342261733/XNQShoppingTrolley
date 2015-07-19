@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="XNQShopTrolleyHeaderTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00g-3W-bJb">
+                        <rect key="frame" x="8" y="11" width="18" height="22"/>
+                        <state key="normal" image="radiobuttons_normal.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="广州市服务车行" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1A-90-Qlr">
+                        <rect key="frame" x="34" y="14" width="84" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzz-gu-fEj">
+                        <rect key="frame" x="126" y="11" width="7" height="22"/>
+                        <state key="normal" image="order_next.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1m-jd-mEb">
+                        <rect key="frame" x="282" y="9" width="30" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="编辑">
+                            <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3KL-D0-tV8">
+                        <rect key="frame" x="281" y="13" width="1" height="19"/>
+                        <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="Y47-Dj-H3p"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p5c-Oh-QLw">
+                        <rect key="frame" x="251" y="9" width="30" height="27"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="领券">
+                            <color key="titleColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3KL-D0-tV8" firstAttribute="height" secondItem="U1m-jd-mEb" secondAttribute="height" id="5IA-lQ-nO5"/>
+                    <constraint firstAttribute="centerY" secondItem="U1m-jd-mEb" secondAttribute="centerY" id="7FS-YL-pPE"/>
+                    <constraint firstItem="m1A-90-Qlr" firstAttribute="leading" secondItem="00g-3W-bJb" secondAttribute="trailing" constant="10" id="JYf-Jy-KRC"/>
+                    <constraint firstItem="p5c-Oh-QLw" firstAttribute="bottom" secondItem="U1m-jd-mEb" secondAttribute="bottom" id="LWq-Fc-HcI"/>
+                    <constraint firstItem="3KL-D0-tV8" firstAttribute="top" secondItem="U1m-jd-mEb" secondAttribute="top" constant="4" id="MTQ-9j-bnt"/>
+                    <constraint firstAttribute="centerY" secondItem="00g-3W-bJb" secondAttribute="centerY" constant="-0.25" id="NqT-hR-rih"/>
+                    <constraint firstItem="00g-3W-bJb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Yso-qv-KAw"/>
+                    <constraint firstItem="U1m-jd-mEb" firstAttribute="leading" secondItem="3KL-D0-tV8" secondAttribute="trailing" id="dAi-Kt-p8G"/>
+                    <constraint firstAttribute="centerY" secondItem="U1m-jd-mEb" secondAttribute="centerY" id="fft-Go-dtN"/>
+                    <constraint firstItem="U1m-jd-mEb" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="gbd-lH-HVJ"/>
+                    <constraint firstItem="3KL-D0-tV8" firstAttribute="bottom" secondItem="U1m-jd-mEb" secondAttribute="bottom" constant="-4" id="hR7-Vu-86d"/>
+                    <constraint firstItem="yzz-gu-fEj" firstAttribute="leading" secondItem="m1A-90-Qlr" secondAttribute="trailing" constant="6" id="kWb-nZ-gz4"/>
+                    <constraint firstItem="3KL-D0-tV8" firstAttribute="leading" secondItem="p5c-Oh-QLw" secondAttribute="trailing" id="kcV-Jy-zEI"/>
+                    <constraint firstAttribute="centerY" secondItem="m1A-90-Qlr" secondAttribute="centerY" constant="0.25" id="tvi-2l-pO2"/>
+                    <constraint firstAttribute="centerY" secondItem="3KL-D0-tV8" secondAttribute="centerY" id="uwZ-cK-Kdr"/>
+                    <constraint firstAttribute="centerY" secondItem="yzz-gu-fEj" secondAttribute="centerY" constant="-0.25" id="zL2-4f-cun"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="5IA-lQ-nO5"/>
+                        <exclude reference="uwZ-cK-Kdr"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="editButton" destination="U1m-jd-mEb" id="rTX-WU-wr9"/>
+                <outlet property="myTitleButton" destination="m1A-90-Qlr" id="6gq-EX-YxN"/>
+                <outlet property="pullDownPaper" destination="p5c-Oh-QLw" id="uOP-qT-mIQ"/>
+                <outlet property="selectButton" destination="00g-3W-bJb" id="BRf-nY-BC0"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="order_next.png" width="7" height="12"/>
+        <image name="radiobuttons_normal.png" width="18" height="18"/>
+    </resources>
+</document>
