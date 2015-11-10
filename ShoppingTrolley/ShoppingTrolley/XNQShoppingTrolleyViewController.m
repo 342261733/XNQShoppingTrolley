@@ -24,10 +24,14 @@
 
 @end
 
+#define HEADERCELLTAG 10000
+#define HEADEREDITTTAG 10100
+
 @implementation XNQShoppingTrolleyViewController
 {
     NSMutableArray *_selectedIndexPathArray;
-    NSMutableArray *_selectSectionArray;//选中头部试图部分
+    NSMutableArray *_selectSectionArray;//选中头部视图部分
+    NSMutableArray *_editSectionArray;//存所有的点击编辑按钮section
     
     NSInteger _sectionNum;
     NSInteger _cellNum;
@@ -50,6 +54,7 @@
 {
     _selectedIndexPathArray = [[NSMutableArray alloc]init];
     _selectSectionArray = [[NSMutableArray alloc]init];
+    _editSectionArray = [[NSMutableArray alloc] init];
     _sectionNum = 5;
     _cellNum = 2;
 }
@@ -147,9 +152,14 @@
     //    cell.backgroundColor = [UIColor clearColor];
     //    cell.contentView.backgroundColor = [UIColor clearColor];
     //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    cell.frame = CGRectMake(0, 0, XNQ_WIDTH, cell.frame.size.height);
     [cell.selectButton addTarget:self action:@selector(headerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.selectButton.tag = section+HEADERCELLTAG;
+    cell.editButton.tag = section + HEADEREDITTTAG;
+    if ([_editSectionArray indexOfObject:[NSNumber numberWithInteger:section]]!=NSNotFound) {
+        [cell.editButton setTitle:@"完成" forState:UIControlStateNormal];
+    }
+    [cell.editButton addTarget:self action:@selector(headerEditClick:) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:cell];
     
     UIImageView *barView = [[UIImageView alloc]initWithFrame:CGRectMake(0, bgView.frame.size.height-1, bgView.frame.size.width, 1)];
@@ -196,6 +206,24 @@
     
 }
 
+-(void)headerEditClick:(UIButton *)btn
+{
+    for (NSNumber *currentNumber in _editSectionArray) {
+        if ([currentNumber integerValue] == btn.tag - HEADEREDITTTAG) {
+            [_editSectionArray removeObject:currentNumber];
+            //            更新数量
+//            
+            [_myTableView reloadData];
+            return;
+        }
+    }
+    [_editSectionArray addObject:[NSNumber numberWithInteger:btn.tag-HEADEREDITTTAG]];//添加的是section
+    
+    [_myTableView reloadData];
+    
+}
+
+
 -(void)tapHeader:(UITapGestureRecognizer *)tap
 {
 }
@@ -233,6 +261,24 @@
     
 
     }
+    
+    if (_editSectionArray.count != 0) {
+        if ([_editSectionArray indexOfObject:[NSNumber numberWithInteger:indexPath.section]] != NSNotFound) {
+            [cell setNumViewHiden:NO];
+        }
+    }
+    cell.btnBlock = ^(void)
+    {
+        NSLog(@"delete click");
+        
+    };
+    cell.currentAccountNumberBlock = ^(NSString *currentAccountNum)
+    {
+        NSLog(@"change account %@",currentAccountNum);
+    };
+    
+
+    
 
     
     return cell;
@@ -269,8 +315,6 @@
     
     [_selectedIndexPathArray addObject:indexPath];
 
-//    [currentCell.selectButton setImage:[UIImage imageNamed:@"radiobuttons_pressed"] forState:UIControlStateNormal];
-//    currentCell.isSelect = YES;
     [currentCell.selectButton setSelected:YES];
     
     //选中全部 头部选中

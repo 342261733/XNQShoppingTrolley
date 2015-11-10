@@ -21,4 +21,26 @@
 @property (weak, nonatomic) IBOutlet UILabel *oldPriceLabel;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *accountNumLabel;//显示数据
+
+
+
+@property (weak, nonatomic) IBOutlet UILabel *accountLabel;//可选择数据
+
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UIButton *plusButton;
+@property (weak, nonatomic) IBOutlet UIButton *minusButton;
+@property (weak, nonatomic) IBOutlet UIImageView *bgSliderView;
+@property (weak, nonatomic) IBOutlet UIImageView *bgWhiteView;
+
+- (IBAction)btnClick:(id)sender;
+
+
+
+-(void)setNumViewHiden:(BOOL)bb;
+
+@property (strong,nonatomic) void(^btnBlock)();
+@property (strong,nonatomic) void(^currentAccountNumberBlock)(NSString *currentNum);
+
+
 @end

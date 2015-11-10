@@ -29,6 +29,9 @@
 		42813CA51AFDFAF700739DF9 /* radiobuttons_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42813C9E1AFDFAF700739DF9 /* radiobuttons_pressed@2x.png */; };
 		42813CA61AFDFAF700739DF9 /* settlement_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42813C9F1AFDFAF700739DF9 /* settlement_normal@2x.png */; };
 		42813CA71AFDFAF700739DF9 /* settlement_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42813CA01AFDFAF700739DF9 /* settlement_pressed@2x.png */; };
+		42FA0A2D1BF22E000020D453 /* addtocart_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FA0A2A1BF22E000020D453 /* addtocart_delete@2x.png */; };
+		42FA0A2E1BF22E000020D453 /* addtocart_delete_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FA0A2B1BF22E000020D453 /* addtocart_delete_pressed@2x.png */; };
+		42FA0A2F1BF22E000020D453 /* addtpcart_sliderBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42FA0A2C1BF22E000020D453 /* addtpcart_sliderBg@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +77,9 @@
 		42813C9E1AFDFAF700739DF9 /* radiobuttons_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radiobuttons_pressed@2x.png"; sourceTree = "<group>"; };
 		42813C9F1AFDFAF700739DF9 /* settlement_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settlement_normal@2x.png"; sourceTree = "<group>"; };
 		42813CA01AFDFAF700739DF9 /* settlement_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settlement_pressed@2x.png"; sourceTree = "<group>"; };
+		42FA0A2A1BF22E000020D453 /* addtocart_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addtocart_delete@2x.png"; sourceTree = "<group>"; };
+		42FA0A2B1BF22E000020D453 /* addtocart_delete_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addtocart_delete_pressed@2x.png"; sourceTree = "<group>"; };
+		42FA0A2C1BF22E000020D453 /* addtpcart_sliderBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addtpcart_sliderBg@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,9 @@
 		42813C5E1AFDF92B00739DF9 /* ShoppingTrolley */ = {
 			isa = PBXGroup;
 			children = (
+				42FA0A2A1BF22E000020D453 /* addtocart_delete@2x.png */,
+				42FA0A2B1BF22E000020D453 /* addtocart_delete_pressed@2x.png */,
+				42FA0A2C1BF22E000020D453 /* addtpcart_sliderBg@2x.png */,
 				42813C9A1AFDFAF700739DF9 /* order_next@2x.png */,
 				42813C9B1AFDFAF700739DF9 /* order_picture_1@2x.png */,
 				42813C9C1AFDFAF700739DF9 /* order_picture_2@2x.png */,
@@ -261,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42813CA11AFDFAF700739DF9 /* order_next@2x.png in Resources */,
+				42FA0A2F1BF22E000020D453 /* addtpcart_sliderBg@2x.png in Resources */,
 				42813CA21AFDFAF700739DF9 /* order_picture_1@2x.png in Resources */,
 				42813C6B1AFDF92B00739DF9 /* Main.storyboard in Resources */,
 				42813CA31AFDFAF700739DF9 /* order_picture_2@2x.png in Resources */,
@@ -269,10 +279,12 @@
 				42813CA41AFDFAF700739DF9 /* radiobuttons_normal@2x.png in Resources */,
 				42813CA51AFDFAF700739DF9 /* radiobuttons_pressed@2x.png in Resources */,
 				42813CA61AFDFAF700739DF9 /* settlement_normal@2x.png in Resources */,
+				42FA0A2E1BF22E000020D453 /* addtocart_delete_pressed@2x.png in Resources */,
 				42813C911AFDF95100739DF9 /* XNQShopTrolleyHeaderTableViewCell.xib in Resources */,
 				42813C891AFDF94500739DF9 /* XNQShoppingTrolleyViewController.xib in Resources */,
 				42813C931AFDF95100739DF9 /* XNQShoppingTrolleyCenterTableViewCell.xib in Resources */,
 				42813CA71AFDFAF700739DF9 /* settlement_pressed@2x.png in Resources */,
+				42FA0A2D1BF22E000020D453 /* addtocart_delete@2x.png in Resources */,
 				42813C6D1AFDF92B00739DF9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +502,7 @@
 				42813C811AFDF92B00739DF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		42813C821AFDF92B00739DF9 /* Build configuration list for PBXNativeTarget "ShoppingTrolleyTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +511,7 @@
 				42813C841AFDF92B00739DF9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
