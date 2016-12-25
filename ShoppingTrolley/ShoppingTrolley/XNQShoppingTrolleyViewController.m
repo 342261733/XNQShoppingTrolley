@@ -27,12 +27,13 @@
 
 @implementation XNQShoppingTrolleyViewController
 {
+    NSArray *_dataArr;
     NSMutableArray *_selectedIndexPathArray;
     NSMutableArray *_selectSectionArray;//选中头部视图部分
     NSMutableArray *_editSectionArray;//存所有的点击编辑按钮section
     
-    NSInteger _sectionNum;
-    NSInteger _cellNum;
+//    NSInteger _sectionNum;
+//    NSInteger _cellNum;
 }
 
 - (void)viewDidLoad {
@@ -47,8 +48,12 @@
     _selectedIndexPathArray = [[NSMutableArray alloc]init];
     _selectSectionArray = [[NSMutableArray alloc]init];
     _editSectionArray = [[NSMutableArray alloc] init];
-    _sectionNum = 5;
-    _cellNum = 2;
+    
+    /* 此处动态配置cell的个数 */
+    _dataArr = @[@[@"1",@"2"],@[@"1",@"2",@"3",@"4"],@[@"1",@"2",@"3"]];
+    
+//    _sectionNum = 5;
+//    _cellNum = 2;
 }
 
 -(void)initNav
@@ -102,7 +107,6 @@
     [self.view bringSubviewToFront:self.totalLabel];
     [self.view bringSubviewToFront:self.rmbLabel];
     [self.view bringSubviewToFront:self.noFare];
-    
 }
 
 #pragma mark - tableView
@@ -124,12 +128,8 @@
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, XNQ_WIDTH, 44)];
     bgView.backgroundColor = [UIColor whiteColor];
     bgView.userInteractionEnabled = YES;
-    
-    //    [bgView setBackgroundColor:[UIColor redColor]];
+
     XNQShopTrolleyHeaderTableViewCell *  cell = [[[NSBundle mainBundle] loadNibNamed:@"XNQShopTrolleyHeaderTableViewCell" owner:self options:nil] lastObject];
-    //    cell.backgroundColor = [UIColor clearColor];
-    //    cell.contentView.backgroundColor = [UIColor clearColor];
-    //    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.frame = CGRectMake(0, 0, XNQ_WIDTH, cell.frame.size.height);
     [cell.selectButton addTarget:self action:@selector(headerBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     cell.selectButton.tag = section+HEADERCELLTAG;
@@ -176,7 +176,7 @@
     [_selectSectionArray addObject:[NSNumber numberWithInteger:button.tag - HEADERCELLTAG]];
     [button setSelected:YES];
     //选中section下面的cell
-    for (int i = 0; i<_cellNum; i++) {
+    for (int i = 0; i<[_dataArr[button.tag - HEADERCELLTAG] count]; i++) {
         [_selectedIndexPathArray addObject:[NSIndexPath indexPathForRow:i inSection:button.tag -HEADERCELLTAG]];
     }
     
@@ -214,14 +214,14 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return _sectionNum;
+    return _dataArr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    
-    return _cellNum;
+
+    return [_dataArr[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -250,7 +250,7 @@
     {
         NSLog(@"change account %@",currentAccountNum);
     };
-
+    
     return cell;
 }
 
@@ -281,7 +281,6 @@
     }
     
     [_selectedIndexPathArray addObject:indexPath];
-
     [currentCell.selectButton setSelected:YES];
     
     //选中全部 头部选中
@@ -293,7 +292,7 @@
             totalSectionRow ++;
         }
     }
-    if (totalSectionRow == _cellNum) {
+    if (totalSectionRow == [_dataArr[indexPath.section] count]) {
         [_selectSectionArray addObject:[NSNumber numberWithInteger:addSection]];
         [tableView reloadData];
     }
@@ -339,9 +338,9 @@
         static NSInteger flag = 0;
         if (flag%2 == 0) {
             [btn setSelected:YES];
-            for (int i=0; i<_sectionNum; i++) {
+            for (int i=0; i<_dataArr.count; i++) {
                 [_selectSectionArray addObject:[NSNumber numberWithInteger:i]];
-                for (int j=0; j<_cellNum; j++) {
+                for (int j=0; j<[_dataArr[i] count]; j++) {
                     [_selectedIndexPathArray addObject:[NSIndexPath indexPathForRow:j inSection:i]];
                 }
             }
