@@ -31,9 +31,6 @@
     NSMutableArray *_selectedIndexPathArray;
     NSMutableArray *_selectSectionArray;//选中头部视图部分
     NSMutableArray *_editSectionArray;//存所有的点击编辑按钮section
-    
-//    NSInteger _sectionNum;
-//    NSInteger _cellNum;
 }
 
 - (void)viewDidLoad {
@@ -51,9 +48,6 @@
     
     /* 此处动态配置cell的个数 */
     _dataArr = @[@[@"1",@"2"],@[@"1",@"2",@"3",@"4"],@[@"1",@"2",@"3"]];
-    
-//    _sectionNum = 5;
-//    _cellNum = 2;
 }
 
 -(void)initNav
@@ -71,15 +65,28 @@
     [editButton setFrame:CGRectMake(0, 0, 70, 30)];
     [editButton setTitle:@"编辑全部" forState:UIControlStateNormal];
     editButton.titleLabel.font = [UIFont systemFontOfSize:17];
+    [editButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [editButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [editButton addTarget:self action:@selector(editAll:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem =[[UIBarButtonItem alloc]initWithCustomView:editButton];
     self.navigationItem.rightBarButtonItem = rightItem;
 }
 
--(void)editAll:(id)sender
+-(void)editAll:(UIButton *)editButton
 {
-    NSLog(@"hello");
+    if ([editButton.titleLabel.text isEqualToString:@"编辑全部"]) {
+        [editButton setTitle:@"完成" forState:UIControlStateNormal];
+        [_editSectionArray removeAllObjects];
+        for (int i=0; i<_dataArr.count; i++) {
+            [_editSectionArray addObject:[NSNumber numberWithInt:i]];
+        }
+    }
+    else {
+        [editButton setTitle:@"编辑全部" forState:UIControlStateNormal];
+        [_editSectionArray removeAllObjects];
+    }
+   
+    [_myTableView reloadData];
 }
 
 -(void)navButton:(id)sender
@@ -190,7 +197,6 @@
         if ([currentNumber integerValue] == btn.tag - HEADEREDITTTAG) {
             [_editSectionArray removeObject:currentNumber];
             //            更新数量
-//            
             [_myTableView reloadData];
             return;
         }
@@ -240,11 +246,30 @@
             [cell setNumViewHiden:NO];
         }
     }
-    cell.btnBlock = ^(void)
+    __weak typeof(self) weakSelf = self;
+    cell.btnBlock = ^(void) // Delete click
     {
-        NSLog(@"delete click");
-        
-        
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        NSMutableArray *arrData = [[NSMutableArray alloc] initWithArray:strongSelf->_dataArr];
+        NSMutableArray *arrSelectSection = [[arrData objectAtIndex:indexPath.section] mutableCopy];
+        [arrSelectSection removeObjectAtIndex:indexPath.row];
+        if (arrSelectSection.count == 0) { // Section is nil should delete all
+            [arrData removeObjectAtIndex:indexPath.section];
+            strongSelf->_dataArr = arrData;
+            [strongSelf.myTableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationTop];
+            // 处理编辑状态
+            if ([_editSectionArray indexOfObject:[NSNumber numberWithInteger:indexPath.section]]!=NSNotFound) {
+                [_editSectionArray removeObjectAtIndex:indexPath.section];
+            }
+        }
+        else {
+            [arrData replaceObjectAtIndex:indexPath.section withObject:arrSelectSection];
+            strongSelf->_dataArr = arrData;
+            [strongSelf.myTableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [strongSelf.myTableView reloadData];
+        });
     };
     cell.currentAccountNumberBlock = ^(NSString *currentAccountNum)
     {
