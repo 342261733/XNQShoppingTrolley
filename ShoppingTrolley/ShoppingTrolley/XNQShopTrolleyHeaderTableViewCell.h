@@ -15,7 +15,4 @@
 @property (weak, nonatomic) IBOutlet UIButton *pullDownPaper;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 
-
-
-
 @end

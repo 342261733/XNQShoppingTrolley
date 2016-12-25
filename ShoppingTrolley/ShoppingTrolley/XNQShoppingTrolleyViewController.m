@@ -18,8 +18,6 @@
 
 @interface XNQShoppingTrolleyViewController ()<UITableViewDataSource,UITableViewDelegate>
 
-
-
 @property (nonatomic,strong) UITableView *myTableView;
 
 @end
@@ -39,15 +37,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    
-
     [self initVariable];
     [self initNav];
     [self initViews];
-    
-    
 }
 
 -(void)initVariable
@@ -62,11 +54,8 @@
 -(void)initNav
 {
     self.navigationItem.title = @"购物车";
-    
-
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [backButton setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-    //    [backButton setBackgroundImage:[UIImage imageNamed:@"titlebar_icon_back_press"] forState:UIControlStateNormal];
     [backButton setFrame:CGRectMake(0, 0, 10, 19)];
     [backButton setTag:200];
     [backButton addTarget:self action:@selector(navButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -74,8 +63,6 @@
     self.navigationItem.leftBarButtonItem = leftItem;
     
     UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //    [backButton setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-    //    [backButton setBackgroundImage:[UIImage imageNamed:@"titlebar_icon_back_press"] forState:UIControlStateNormal];
     [editButton setFrame:CGRectMake(0, 0, 70, 30)];
     [editButton setTitle:@"编辑全部" forState:UIControlStateNormal];
     editButton.titleLabel.font = [UIFont systemFontOfSize:17];
@@ -83,8 +70,6 @@
     [editButton addTarget:self action:@selector(editAll:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem =[[UIBarButtonItem alloc]initWithCustomView:editButton];
     self.navigationItem.rightBarButtonItem = rightItem;
-    
-    
 }
 
 -(void)editAll:(id)sender
@@ -107,10 +92,8 @@
     self.myTableView.dataSource = self;
     [self.view addSubview:self.myTableView];
     
-    
     [self.selectAllButton setImage:[UIImage imageNamed:@"radiobuttons_pressed"] forState:UIControlStateSelected];
     
-
     [self.view bringSubviewToFront:self.bgImageView];
     [self.view bringSubviewToFront:self.selectAllButton];
     [self.view bringSubviewToFront:self.totalPriceLabel];
@@ -120,12 +103,7 @@
     [self.view bringSubviewToFront:self.rmbLabel];
     [self.view bringSubviewToFront:self.noFare];
     
-    
 }
-
-
-
-
 
 #pragma mark - tableView
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -228,9 +206,6 @@
 {
 }
 
-
-
-
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     return nil;
@@ -258,8 +233,6 @@
         cell.backgroundColor = [UIColor clearColor];
         cell.contentView.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-
     }
     
     if (_editSectionArray.count != 0) {
@@ -271,20 +244,15 @@
     {
         NSLog(@"delete click");
         
+        
     };
     cell.currentAccountNumberBlock = ^(NSString *currentAccountNum)
     {
         NSLog(@"change account %@",currentAccountNum);
     };
-    
 
-    
-
-    
     return cell;
 }
-
-
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -312,7 +280,6 @@
         }
     }
     
-    
     [_selectedIndexPathArray addObject:indexPath];
 
     [currentCell.selectButton setSelected:YES];
@@ -330,9 +297,6 @@
         [_selectSectionArray addObject:[NSNumber numberWithInteger:addSection]];
         [tableView reloadData];
     }
-    
-//    [tableView reloadData];
-    
 }
 
 
@@ -345,7 +309,7 @@
         }
     }
 }
-//
+
 -(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
     for (NSNumber *currentNum in _selectSectionArray) {
@@ -357,36 +321,17 @@
     }
 }
 
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return NO;
-//}
-
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)btnClick:(id)sender {
     UIButton *btn = (UIButton *)sender;
     if (btn.tag == 300) {
         //结算
-        NSLog(@"%@",_selectSectionArray);
-        NSLog(@"%@",_selectedIndexPathArray);
+        NSLog(@"_selectSectionArray %@",_selectSectionArray);
+        NSLog(@"_selectedIndexPathArray %@",_selectedIndexPathArray);
     }
     else if (btn.tag == 301)
     {
@@ -407,8 +352,6 @@
             [_selectedIndexPathArray removeAllObjects];
         }
         flag ++;
-
-
 
         [_myTableView reloadData];
         

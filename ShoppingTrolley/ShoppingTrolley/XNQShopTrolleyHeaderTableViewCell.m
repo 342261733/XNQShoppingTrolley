@@ -11,7 +11,7 @@
 @implementation XNQShopTrolleyHeaderTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    [super awakeFromNib];
     [self.pullDownPaper setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self.editButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     [self.selectButton setImage:[UIImage imageNamed:@"radiobuttons_pressed"] forState:UIControlStateSelected];

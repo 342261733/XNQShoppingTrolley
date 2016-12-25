@@ -20,10 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *oldPriceLabel;
 
-
 @property (weak, nonatomic) IBOutlet UILabel *accountNumLabel;//显示数据
-
-
 
 @property (weak, nonatomic) IBOutlet UILabel *accountLabel;//可选择数据
 

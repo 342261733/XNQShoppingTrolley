@@ -11,29 +11,14 @@
 @implementation XNQShoppingTrolleyCenterTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
-    
-    
+    [super awakeFromNib];
     [self.selectButton setImage:[UIImage imageNamed:@"radiobuttons_pressed"] forState:UIControlStateSelected];
     [self.deleteButton setImage:[UIImage imageNamed:@"addtocart_delete_pressed"] forState:UIControlStateHighlighted];
     self.selectButton.userInteractionEnabled = NO;
-    
     [self setNumViewHiden:YES];
-    
-}
-
-
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    
-    // Configure the view for the selected state
-    
 }
 
 - (IBAction)btnClick:(id)sender {
-    
     UIButton *btn =(UIButton *)sender;
     if (btn.tag == 200) {
         //-
@@ -42,7 +27,7 @@
             self.currentAccountNumberBlock(self.accountLabel.text);
         }
     }
-    else if (btn.tag == 201){
+    else if (btn.tag == 201) {
         //+
         self.accountLabel.text = [NSString stringWithFormat:@"%lu",[self.accountLabel.text integerValue]+1];
         if (self.currentAccountNumberBlock) {
@@ -50,31 +35,24 @@
         }
         
     }
-    else if (btn.tag == 202)
-    {
+    else if (btn.tag == 202) {
         //delete
         //        [self setNumViewHiden:YES];
         if (self.btnBlock) {
             self.btnBlock();
         }
-        
-        
     }
-    
 }
 
 
 -(void)setNumViewHiden:(BOOL)bb
 {
-    
     [self.accountLabel setHidden:bb];
     [self.deleteButton setHidden:bb];
     [self.plusButton setHidden:bb];
     [self.minusButton setHidden:bb];
     [self.bgSliderView setHidden:bb];
     [self.bgWhiteView setHidden:bb];
-    
-    
 }
 
 @end
